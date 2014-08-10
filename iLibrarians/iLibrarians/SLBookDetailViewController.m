@@ -38,11 +38,11 @@
     [self setTitle:@"图书详情"];
     [self.view setBackgroundColor:aRGB(1, 239, 239, 239)];
     
-    self.bookCoverImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 80, 75, 100)];
-    self.bookTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(95, 68, 205, 40)];
-    self.bookIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(95, 106, 205, 17)];
-    self.authorLabel    = [[UILabel alloc] initWithFrame:CGRectMake(95, 134, 205, 17)];
-    self.publishLabel   = [[UILabel alloc] initWithFrame:CGRectMake(95, 162, 205, 17)];
+    self.bookCoverImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 16, 75, 100)];
+    self.bookTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(95, 4, 205, 40)];
+    self.bookIndexLabel = [[UILabel alloc] initWithFrame:CGRectMake(95, 42, 205, 17)];
+    self.authorLabel    = [[UILabel alloc] initWithFrame:CGRectMake(95, 70, 205, 17)];
+    self.publishLabel   = [[UILabel alloc] initWithFrame:CGRectMake(95, 98, 205, 17)];
     
     
     self.bookTitleLabel.text        = self.bookTitle;
@@ -52,7 +52,7 @@
     self.publishLabel.text          = self.publish;
     self.iLibEngine                 = [[iLIBEngine alloc]initWithHostName:kHostUrl customHeaderFields:nil];
     
-    self.statusTableView            = [[UITableView alloc] initWithFrame:CGRectMake(10, 188, 300, 330)];
+    self.statusTableView            = [[UITableView alloc] initWithFrame:CGRectMake(10, 124, 300, 330)];
     self.statusTableView.backgroundColor = aRGB(1, 239, 239, 239);
     self.statusTableView.dataSource = self;
     self.statusTableView.delegate   = self;

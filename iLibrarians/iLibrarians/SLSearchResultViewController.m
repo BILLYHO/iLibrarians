@@ -36,7 +36,7 @@
     self.resultTableView                 = [[UITableView alloc] initWithFrame:CGRectMake(0,
                                                                                          0,
                                                                                          320,
-                                                                                         self.view.frame.size.height )];
+                                                                                         self.view.frame.size.height -64.)];
     self.resultTableView.backgroundColor = [UIColor whiteColor];
     self.resultTableView.dataSource      = self;
     self.resultTableView.delegate        = self;
@@ -171,7 +171,7 @@
             }
             
             cell.backgroundColor = [UIColor whiteColor];
-            cell.textLabel.text          = @"load more";
+            cell.textLabel.text          = @"加载更多...";
             cell.textLabel.textAlignment = NSTextAlignmentCenter;
             return cell;
         }

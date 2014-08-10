@@ -9,10 +9,9 @@
 #import "SLMyInfoViewController.h"
 #import "iLIBEngine.h"
 
-@interface SLMyInfoViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SLMyInfoViewController ()
 
-@property (nonatomic, strong) UITableView *myInfoTable;
-@property (nonatomic, strong) NSArray *tableCellContent;
+@property (nonatomic, strong) UIButton *logoutButton;
 
 @end
 
@@ -27,13 +26,15 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self initView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initView];
-    
-    NSArray *content = [[NSArray alloc] initWithObjects:@"退出登录",nil];
-    self.tableCellContent = content;
 }
 
 - (void)initView
@@ -41,48 +42,11 @@
     CGFloat width = self.view.frame.size.width;
     CGFloat height = self.view.frame.size.height;
     
-    self.myInfoTable = [[UITableView alloc] initWithFrame:CGRectMake(0., 0., width, height - 64.)];
-    [self.myInfoTable setDelegate:self];
-    [self.myInfoTable setDataSource:self];
-    
-    [self.view addSubview:self.myInfoTable];
-}
-
-
-#pragma mark - Table view data source & delegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.tableCellContent count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    [cell.textLabel setText:[self.tableCellContent objectAtIndex:indexPath.row]];
-    
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 14;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self didTouchOnLogoutItem];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.logoutButton = [[UIButton alloc] initWithFrame:CGRectMake((width - 285)/2, (height - 55)/2, 285., 55.)];
+    [self.logoutButton setBackgroundImage:[UIImage imageNamed:@"item_bg_3.png"] forState:UIControlStateNormal];
+    [self.logoutButton setTitle:@"退出登录" forState:UIControlStateNormal];
+    [self.logoutButton addTarget:self action:@selector(didTouchOnLogoutItem) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.logoutButton];
 }
 
 - (void)didTouchOnLogoutItem{
@@ -100,8 +64,9 @@
             NSLog(@"Engine error!Failed to logout!");
         }];
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
- //       [self dismissViewControllerAnimated:YES completion:nil];
+        //       [self dismissViewControllerAnimated:YES completion:nil];
     }
     
 }
+
 @end

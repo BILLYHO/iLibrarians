@@ -2,8 +2,8 @@
 //  iLibrariansTests.m
 //  iLibrariansTests
 //
-//  Created by johnson on 14-7-8.
-//  Copyright (c) 2014年 Apple Club. All rights reserved.
+//  Created by johnsonpuning on 14-7-28.
+//  Copyright (c) 2014年 Johnson. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

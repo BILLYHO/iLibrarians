@@ -21,7 +21,6 @@
 @property(weak,nonatomic)IBOutlet UILabel *bookPressLabel;
 @property(weak,nonatomic)IBOutlet UIImageView *coverView;
 @property(weak,nonatomic)UIImage *image;
-@property (strong, nonatomic) iLIBEngine *iLibEngine;
 
 - (void)initWithBookItem;
 

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2C1B312A196BC4F40076E2DF"
+               BlueprintIdentifier = "2CEF072819869FFD0079B3F3"
                BuildableName = "iLibrarians.app"
                BlueprintName = "iLibrarians"
                ReferencedContainer = "container:iLibrarians.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2C1B3145196BC4F40076E2DF"
+               BlueprintIdentifier = "2CEF074319869FFD0079B3F3"
                BuildableName = "iLibrariansTests.xctest"
                BlueprintName = "iLibrariansTests"
                ReferencedContainer = "container:iLibrarians.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2C1B312A196BC4F40076E2DF"
+            BlueprintIdentifier = "2CEF072819869FFD0079B3F3"
             BuildableName = "iLibrarians.app"
             BlueprintName = "iLibrarians"
             ReferencedContainer = "container:iLibrarians.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2C1B312A196BC4F40076E2DF"
+            BlueprintIdentifier = "2CEF072819869FFD0079B3F3"
             BuildableName = "iLibrarians.app"
             BlueprintName = "iLibrarians"
             ReferencedContainer = "container:iLibrarians.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2C1B312A196BC4F40076E2DF"
+            BlueprintIdentifier = "2CEF072819869FFD0079B3F3"
             BuildableName = "iLibrarians.app"
             BlueprintName = "iLibrarians"
             ReferencedContainer = "container:iLibrarians.xcodeproj">

@@ -101,7 +101,6 @@
 		[self.view addSubview:lendButton];
 		
 		_book = [[iLIBFloatBookItem alloc] init];
-		_iLibEngine = [SLAppDelegate sharedDelegate].iLibEngine;
 	}
     return self;
 }

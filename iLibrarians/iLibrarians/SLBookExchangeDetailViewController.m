@@ -42,12 +42,12 @@
         // Custom initialization
 		self.title = @"评论";
 		
-        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, 320, self.view.frame.size.height-40-64)];
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-40-64)];
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         [self.view addSubview:self.tableView];
         
-        self.textFieldBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-35, 320, 35)];
+        self.textFieldBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-35-64, 320, 35)];
         self.textFieldBackgroundView.backgroundColor = textFieldBackgroundColor;
         [self.view addSubview:self.textFieldBackgroundView];
         

@@ -41,8 +41,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self setTitle:@"图书馆"];
-    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"publishMsg"] style:UIBarButtonItemStylePlain target:self action:@selector(publishBook)];
     [leftBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"publishMsg"]]];
@@ -51,6 +49,10 @@
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"myInfo"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMyInfo)];
     [rightBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"myInfo"]]];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+    
+    if (![self.title isEqualToString:@"图书漂流"]) {
+        self.navigationItem.leftBarButtonItem.enabled = NO;
+    }
 }
 
 - (void)initView
@@ -67,7 +69,7 @@
     [self.mainScrollView setShowsHorizontalScrollIndicator:NO];
     [self.mainScrollView setDelegate:self];
     [self.view addSubview:self.mainScrollView];
-
+    
     SLMyLibraryView *myLibraryView = [[SLMyLibraryView alloc] initWithFrame:CGRectMake(0., 0., width, height)];
     myLibraryView.delegate = self;
     
@@ -76,7 +78,7 @@
     
     SLBookExchangeView *bookExchangeView = [[SLBookExchangeView alloc] initWithFrame:CGRectMake(0.+ width + width, 0., width, height)];
     bookExchangeView.delegate = self;
-        
+    
     [self.mainScrollView addSubview:myLibraryView];
     [self.mainScrollView addSubview:searchBookView];
     [self.mainScrollView addSubview:bookExchangeView];
