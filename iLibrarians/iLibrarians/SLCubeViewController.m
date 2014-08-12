@@ -50,6 +50,10 @@
     bookExchangeView.delegate = self;
     [controller.view addSubview:bookExchangeView];
     [self addCubeSideForChildController:controller];
+    
+    controller = [[SLCubeChildViewController alloc] init];
+    controller.view.backgroundColor = [UIColor redColor];
+    [self addCubeSideForChildController:controller];
 }
 
 #pragma mark - BorrowBookDelegate

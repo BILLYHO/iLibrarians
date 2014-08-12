@@ -16,7 +16,7 @@ CGFloat const kDuration    =  0.4f;
 // basic cube state properties
 
 @property (nonatomic)         NSInteger       facingSide;
-
+@property (nonatomic)         NSInteger       currentSide;
 // basic CADisplayLink properties
 
 @property (nonatomic, strong) CADisplayLink  *displayLink;
@@ -43,6 +43,7 @@ CGFloat const kDuration    =  0.4f;
     [self.view addGestureRecognizer:pan];
 
     self.facingSide = 0;
+    self.currentSide = 1;
 }
 
 #pragma mark - Management of cube sides
@@ -101,7 +102,6 @@ CGFloat const kDuration    =  0.4f;
 {
     [self.childViewControllers enumerateObjectsUsingBlock:^(UIViewController *controller, NSUInteger idx, BOOL *stop) {
         CGFloat startingAngle = ((idx + _facingSide) % 4) * M_PI_2;
-
         [self rotateCubeSideForViewController:controller byAngle:startingAngle+rotation applyPerspective:YES];
     }];
 }
@@ -126,20 +126,26 @@ CGFloat const kDuration    =  0.4f;
         gesture.state == UIGestureRecognizerStateCancelled)
     {
         CGPoint velocity = [gesture velocityInView:gesture.view];
-
+        
         // factor in velocity to capture a "flick"
 
         double percentageOfWidthIncludingVelocity = (translation.x + 0.25 * velocity.x) / self.view.frame.size.width;
 
         self.startAngle = percentageOfWidth * M_PI_2;
+        NSLog(@"%d", self.currentSide);
 
         // if moved left (and/or flicked left)
-        if (translation.x < 0 && percentageOfWidthIncludingVelocity < -0.5)
+        if (translation.x < 0 && percentageOfWidthIncludingVelocity < -0.5  )
+        {
             self.targetAngle = -M_PI_2;
-
+            NSLog(@"left");
+        }
         // if moved right (and/or flicked right)
-        else if (translation.x > 0 && percentageOfWidthIncludingVelocity > 0.5)
+        else if (translation.x > 0 && percentageOfWidthIncludingVelocity > 0.5  )
+        {
             self.targetAngle = M_PI_2;
+            NSLog(@"right");
+        }
 
         // otherwise, move back to zero
         else
@@ -195,7 +201,7 @@ CGFloat const kDuration    =  0.4f;
 
         CGFloat faceAdjustment = self.targetAngle / M_PI_2;
         self.facingSide = (int)floorf(faceAdjustment + self.facingSide + 4.5) % 4;
-
+        
         [self rotateAllSidesBy:0.0];
     }
 }
