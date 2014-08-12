@@ -166,6 +166,10 @@
 		2CEF075219869FFE0079B3F3 /* iLibrariansTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF075119869FFE0079B3F3 /* iLibrariansTests.m */; };
 		2CEF07601986A0E60079B3F3 /* SLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF075F1986A0E60079B3F3 /* SLMainViewController.m */; };
 		2CEF07631986A1120079B3F3 /* SLMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF07621986A1120079B3F3 /* SLMyInfoViewController.m */; };
+		F6ECA12C1999FABC003098D7 /* SLCubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6ECA12B1999FABC003098D7 /* SLCubeViewController.m */; };
+		F6ECA137199A042F003098D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6ECA136199A042F003098D7 /* QuartzCore.framework */; };
+		F6ECA13A199A0DC1003098D7 /* SLCubeChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6ECA139199A0DC1003098D7 /* SLCubeChildViewController.m */; };
+		F6ECA140199A10F6003098D7 /* GKLCubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6ECA13F199A10F6003098D7 /* GKLCubeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -409,6 +413,13 @@
 		2CEF075F1986A0E60079B3F3 /* SLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMainViewController.m; sourceTree = "<group>"; };
 		2CEF07611986A1120079B3F3 /* SLMyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMyInfoViewController.h; sourceTree = "<group>"; };
 		2CEF07621986A1120079B3F3 /* SLMyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMyInfoViewController.m; sourceTree = "<group>"; };
+		F6ECA12A1999FABC003098D7 /* SLCubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCubeViewController.h; sourceTree = "<group>"; };
+		F6ECA12B1999FABC003098D7 /* SLCubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCubeViewController.m; sourceTree = "<group>"; };
+		F6ECA136199A042F003098D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F6ECA138199A0DC1003098D7 /* SLCubeChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCubeChildViewController.h; sourceTree = "<group>"; };
+		F6ECA139199A0DC1003098D7 /* SLCubeChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCubeChildViewController.m; sourceTree = "<group>"; };
+		F6ECA13E199A10F6003098D7 /* GKLCubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLCubeViewController.h; sourceTree = "<group>"; };
+		F6ECA13F199A10F6003098D7 /* GKLCubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLCubeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,6 +427,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6ECA137199A042F003098D7 /* QuartzCore.framework in Frameworks */,
 				2CEF072F19869FFD0079B3F3 /* CoreGraphics.framework in Frameworks */,
 				2CEF073119869FFD0079B3F3 /* UIKit.framework in Frameworks */,
 				2CEF072D19869FFD0079B3F3 /* Foundation.framework in Frameworks */,
@@ -495,6 +507,7 @@
 		2C636BF51987E3BC00C405C4 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				F6ECA1261999F9EF003098D7 /* CubeController */,
 				2C636D3C1987EE6400C405C4 /* IQKeyBoardManager */,
 				2C636D0D1987EBCE00C405C4 /* SDWebImage */,
 				2C636CB61987E97F00C405C4 /* MJRefresh */,
@@ -773,6 +786,7 @@
 		2CEF072B19869FFD0079B3F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F6ECA136199A042F003098D7 /* QuartzCore.framework */,
 				2CEF072C19869FFD0079B3F3 /* Foundation.framework */,
 				2CEF072E19869FFD0079B3F3 /* CoreGraphics.framework */,
 				2CEF073019869FFD0079B3F3 /* UIKit.framework */,
@@ -795,6 +809,10 @@
 				2C636CAA1987E6F600C405C4 /* SLLogInViewController.xib */,
 				2CEF075E1986A0E60079B3F3 /* SLMainViewController.h */,
 				2CEF075F1986A0E60079B3F3 /* SLMainViewController.m */,
+				F6ECA12A1999FABC003098D7 /* SLCubeViewController.h */,
+				F6ECA12B1999FABC003098D7 /* SLCubeViewController.m */,
+				F6ECA138199A0DC1003098D7 /* SLCubeChildViewController.h */,
+				F6ECA139199A0DC1003098D7 /* SLCubeChildViewController.m */,
 				2CEF07611986A1120079B3F3 /* SLMyInfoViewController.h */,
 				2CEF07621986A1120079B3F3 /* SLMyInfoViewController.m */,
 				2C636CB01987E93B00C405C4 /* mainView */,
@@ -845,6 +863,15 @@
 				2CEF074E19869FFD0079B3F3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F6ECA1261999F9EF003098D7 /* CubeController */ = {
+			isa = PBXGroup;
+			children = (
+				F6ECA13E199A10F6003098D7 /* GKLCubeViewController.h */,
+				F6ECA13F199A10F6003098D7 /* GKLCubeViewController.m */,
+			);
+			path = CubeController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1036,11 +1063,13 @@
 				2C636D0B1987EB8900C405C4 /* SLBookExchangeDetailCell.m in Sources */,
 				2C636D081987EB8900C405C4 /* SLBookItemCell.m in Sources */,
 				2C636D091987EB8900C405C4 /* SLBookExchangeCell.m in Sources */,
+				F6ECA13A199A0DC1003098D7 /* SLCubeChildViewController.m in Sources */,
 				2CEF07601986A0E60079B3F3 /* SLMainViewController.m in Sources */,
 				2C636BCB1987E38000C405C4 /* iLIBEngine.m in Sources */,
 				2C636CAF1987E93800C405C4 /* SLMyLibraryView.m in Sources */,
 				2C636BEB1987E3B900C405C4 /* NSData+MKBase64.m in Sources */,
 				2C636CC51987EA5F00C405C4 /* SLSearchBookView.m in Sources */,
+				F6ECA140199A10F6003098D7 /* GKLCubeViewController.m in Sources */,
 				2C636BEC1987E3B900C405C4 /* NSDate+RFC1123.m in Sources */,
 				2C636C011987E3F400C405C4 /* iLIBFloatBookItem.m in Sources */,
 				2C636BF21987E3B900C405C4 /* MKNetworkEngine.m in Sources */,
@@ -1079,6 +1108,7 @@
 				2C636D331987EBCE00C405C4 /* SDWebImagePrefetcher.m in Sources */,
 				2C636CB41987E94F00C405C4 /* iLIBBorrowedBookDetailViewController.m in Sources */,
 				2C636CF41987EB6100C405C4 /* SLBookExchangeView.m in Sources */,
+				F6ECA12C1999FABC003098D7 /* SLCubeViewController.m in Sources */,
 				2C636CFA1987EB7300C405C4 /* SLBookExchangePublishViewController.m in Sources */,
 				2C636D351987EBCE00C405C4 /* UIImage+GIF.m in Sources */,
 				2C636BED1987E3B900C405C4 /* NSDictionary+RequestEncoding.m in Sources */,

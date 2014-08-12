@@ -4,6 +4,8 @@
 #import "SLMainViewController.h"
 #import "MBProgressHUD.h"
 
+#import "SLCubeViewController.h"
+
 #define tabbarTintColor [UIColor colorWithRed:0.4157 green:0.9216 blue:0.6784 alpha:1.0]
 
 @interface SLLogInViewController ()
@@ -96,10 +98,15 @@
 
 - (void)goToMainViewController
 {
-    SLMainViewController *mainViewController = [[SLMainViewController alloc] init];
-    UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
-    [self presentViewController:mainNavigationController animated:YES completion:^{
-                         [mainViewController setPageOfScrollView:2];
-                     }];
+//    SLMainViewController *mainViewController = [[SLMainViewController alloc] init];
+//    UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+//    [self presentViewController:mainNavigationController animated:YES completion:^{
+//                         [mainViewController setPageOfScrollView:2];
+//                     }];
+    
+    SLCubeViewController *controller = [[SLCubeViewController alloc]init];
+    [self presentViewController:controller animated:YES completion:nil];
 }
+
+
 @end
