@@ -105,7 +105,8 @@
 //                     }];
     
     SLCubeViewController *controller = [[SLCubeViewController alloc]init];
-    [self presentViewController:controller animated:YES completion:nil];
+    UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:mainNavigationController animated:YES completion:nil];
 }
 
 

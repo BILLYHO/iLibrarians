@@ -23,6 +23,7 @@
 
 - (void)cubeViewDidUnhide;
 
+- (void)setupPage:(NSInteger)currentPage;
 @end
 
 /** Custom container class for rotating cube of four view controllers. */
@@ -34,6 +35,8 @@
  @param controller The child view controller being added
 
  */
+
+@property (nonatomic, weak) id <GKLCubeViewControllerDelegate> delegate;
 
 - (void)addCubeSideForChildController:(UIViewController *)controller;
 

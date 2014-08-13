@@ -74,7 +74,7 @@
     myLibraryView.delegate = self;
     
     SLSearchBookView *searchBookView = [[SLSearchBookView alloc] initWithFrame:CGRectMake(0.+ width, 0., width, height)];
-    searchBookView.vc = self;
+    searchBookView.delegate = self;
     
     SLBookExchangeView *bookExchangeView = [[SLBookExchangeView alloc] initWithFrame:CGRectMake(0.+ width + width, 0., width, height)];
     bookExchangeView.delegate = self;

@@ -30,6 +30,7 @@
 
 - (void)initView
 {
+    self.backgroundColor = [UIColor whiteColor];
     self.searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(60., 160., 200., 30.)];
     [self.searchTextField setPlaceholder:@"书名/作者/ISBN"];
     [self.searchTextField setTextAlignment:NSTextAlignmentCenter];
@@ -58,9 +59,10 @@
 //click return to start search
 - (void)SearchTextFieldDidEndOnExit:(id)sender {
     
-    SLSearchResultViewController *resultViewController = [[SLSearchResultViewController alloc] init];
-    [self.vc.navigationController pushViewController:resultViewController animated:YES];
-    resultViewController.searchString = self.searchTextField.text;
+//    SLSearchResultViewController *resultViewController = [[SLSearchResultViewController alloc] init];
+//    [self.vc.navigationController pushViewController:resultViewController animated:YES];
+//    resultViewController.searchString = self.searchTextField.text;
+    [_delegate searchKeyword:self.searchTextField.text];
     
     [self.searchTextField resignFirstResponder];
 }

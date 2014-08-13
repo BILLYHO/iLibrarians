@@ -44,6 +44,7 @@ CGFloat const kDuration    =  0.4f;
 
     self.facingSide = 0;
     self.currentSide = 1;
+    [_delegate setupPage:self.currentSide];
 }
 
 #pragma mark - Management of cube sides
@@ -132,19 +133,21 @@ CGFloat const kDuration    =  0.4f;
         double percentageOfWidthIncludingVelocity = (translation.x + 0.25 * velocity.x) / self.view.frame.size.width;
 
         self.startAngle = percentageOfWidth * M_PI_2;
-        NSLog(@"%d", self.currentSide);
+        
 
         // if moved left (and/or flicked left)
-        if (translation.x < 0 && percentageOfWidthIncludingVelocity < -0.5  )
+        if (translation.x < 0 && percentageOfWidthIncludingVelocity < -0.5 && self.currentSide < 2 )
         {
             self.targetAngle = -M_PI_2;
             NSLog(@"left");
+            self.currentSide++;
         }
         // if moved right (and/or flicked right)
-        else if (translation.x > 0 && percentageOfWidthIncludingVelocity > 0.5  )
+        else if (translation.x > 0 && percentageOfWidthIncludingVelocity > 0.5  && self.currentSide > 0)
         {
             self.targetAngle = M_PI_2;
             NSLog(@"right");
+            self.currentSide--;
         }
 
         // otherwise, move back to zero
@@ -176,6 +179,7 @@ CGFloat const kDuration    =  0.4f;
 
 - (void)stopDisplayLink
 {
+    [_delegate setupPage:self.currentSide];
     [self.displayLink invalidate];
     self.displayLink = nil;
 }
