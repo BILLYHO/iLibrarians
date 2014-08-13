@@ -67,7 +67,7 @@
     if (remainderTimeInterval > 0) {
         NSTimeInterval secondsOfADay = 24 * 60 * 60;
         NSInteger remainderDays = remainderTimeInterval / secondsOfADay;
-        _daysLeftLabel.text = [NSString stringWithFormat:@"还剩%ld天", remainderDays];
+        _daysLeftLabel.text = [NSString stringWithFormat:@"还剩%d天", remainderDays];
     } else {
         _daysLeftLabel.text = @"过期啦！";
     }

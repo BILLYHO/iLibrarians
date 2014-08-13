@@ -534,9 +534,9 @@
 			isa = PBXGroup;
 			children = (
 				2C636C041987E5C100C405C4 /* Icon */,
-				2C636C071987E5C100C405C4 /* myInfo@2x.png */,
 				2C636C081987E5C100C405C4 /* others */,
 				2C636C1A1987E5C100C405C4 /* publishMsg@2x.png */,
+				2C636C071987E5C100C405C4 /* myInfo@2x.png */,
 				2C636C1B1987E5C100C405C4 /* res */,
 				2C636C3C1987E5C100C405C4 /* tabbar */,
 			);

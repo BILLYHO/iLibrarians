@@ -41,6 +41,10 @@
     if (self) {
         // Custom initialization
 		self.title = @"评论";
+        
+        [self.navigationController.navigationItem.backBarButtonItem setTitle:@" "];
+        [self.navigationController.navigationItem.backBarButtonItem setTintColor:[UIColor grayColor]];
+        
 		
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, self.view.frame.size.height-40-64)];
         self.tableView.dataSource = self;
@@ -76,8 +80,6 @@
 		[self initRefresh];
         self.iLibEngine = [SLAppDelegate sharedDelegate].iLibEngine;
 		_pageCount = 1;
-
-        
     }
     return self;
 }
@@ -86,7 +88,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,6 +119,8 @@
         cell = [[SLBookExchangeCommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     [cell configureForCell:[_commentArray objectAtIndex:indexPath.row-1]];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -141,11 +144,19 @@
 }
 
 #pragma mark - Refresh View Delegate
+- (void) initRefresh
+{
+    [_header beginRefreshing];
+    _pageCount = 1;
+    NSLog(@"刷新");
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
+}
 
 - (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
 {
     if (_header == refreshView)
 	{
+        NSLog(@"刷新");
 		_pageCount = 1;
 		[self.iLibEngine getCommentWithId:self.book.resId page:_pageCount onSucceeded:^(NSArray *bookArray) {
 			_commentArray = (id)bookArray;
@@ -155,7 +166,6 @@
 			NSLog(@"Get Comments Error");
             [_header endRefreshing];
 		}];
-        NSLog(@"刷新");
     }
     else
 	{
@@ -171,14 +181,8 @@
             [_footer endRefreshing];
         }];
     }
-    //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(reloadTableView) userInfo:nil repeats:NO];
 }
 
-- (void)reloadTableView
-{
-    [_tableView reloadData];
-    [_header beginRefreshing];
-}
 #pragma mark - Selector
 
 - (void)publishComment
@@ -213,23 +217,13 @@
     } onError:^(NSError *engineError) {
         NSLog(@"Get Comments Error");
     }];
-    
-
 }
 
-- (void) initRefresh
-{
-    [_header beginRefreshing];
-    _pageCount = 1;
-    NSLog(@"刷新");
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
-}
+
 
 #pragma mark - TextField Delegate
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    
-}
+- (void)textFieldDidEndEditing{}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	NSLog(@"return");

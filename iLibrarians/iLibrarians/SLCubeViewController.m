@@ -34,43 +34,27 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bar.png"] forBarMetrics:UIBarMetricsDefault];
-    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"publishMsg"] style:UIBarButtonItemStylePlain target:self action:@selector(publishBook)];
-    [leftBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"publishMsg"]]];
-    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
     
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"myInfo"] style:UIBarButtonItemStylePlain target:self action:@selector(goToMyInfo)];
-    [rightBarButtonItem setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"myInfo"]]];
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-    
-    if (![self.title isEqualToString:@"图书漂流"]) {
-        self.navigationItem.leftBarButtonItem.enabled = NO;
-    }
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [rightButton setTintColor:[UIColor grayColor]];
+    [rightButton addTarget:self action:@selector(goToMyInfo) forControlEvents:UIControlEventTouchUpInside];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
 }
 
 - (void)viewDidLoad
 {
     self.delegate = self;
     [super viewDidLoad];
-    [self.view setOpaque:YES];
-    [self configureDemonstrationChildViewControllers];
     
-    self.mainPageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0., self.view.frame.size.height - PAGE_CONTROL_BAR_HEIGHT - 67,
-                                                                           self.view.frame.size.width, PAGE_CONTROL_BAR_HEIGHT)];
-    [self.mainPageControl setNumberOfPages:NUMBER_OF_PAGE];
-    [self.mainPageControl setPageIndicatorTintColor:[UIColor lightGrayColor]];
-    [self.mainPageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
-    [self.mainPageControl setBackgroundColor:[UIColor whiteColor]];
-    [self.mainPageControl setEnabled:NO];
-    [self.mainPageControl setCurrentPage:1];
-    [self.view addSubview:self.mainPageControl];
-
+    [self configureDemonstrationChildViewControllers];
+    [self initPageControl];
 }
 
 - (void)configureDemonstrationChildViewControllers
 {
     UIViewController *controller;
 
-    
     controller = [[UIViewController alloc] init];
     SLSearchBookView *searchBookView = [[SLSearchBookView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height  - PAGE_CONTROL_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - 50)];
     searchBookView.delegate = self;
@@ -78,7 +62,7 @@
     [self addCubeSideForChildController:controller];
     
     controller = [[UIViewController alloc] init];
-    SLBookExchangeView *bookExchangeView = [[SLBookExchangeView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height  - PAGE_CONTROL_BAR_HEIGHT)];
+    SLBookExchangeView *bookExchangeView = [[SLBookExchangeView alloc] initWithFrame:CGRectMake(0, 0.5, self.view.frame.size.width, self.view.frame.size.height  - PAGE_CONTROL_BAR_HEIGHT)];
     bookExchangeView.delegate = self;
     [controller.view addSubview:bookExchangeView];
     [self addCubeSideForChildController:controller];
@@ -91,6 +75,19 @@
     myLibraryView.delegate = self;
     [controller.view addSubview:myLibraryView];
     [self addCubeSideForChildController:controller];
+}
+
+- (void)initPageControl
+{
+    self.mainPageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0f, self.view.frame.size.height - PAGE_CONTROL_BAR_HEIGHT - 67,
+                                                                           self.view.frame.size.width, PAGE_CONTROL_BAR_HEIGHT)];
+    [self.mainPageControl setNumberOfPages:NUMBER_OF_PAGE];
+    [self.mainPageControl setPageIndicatorTintColor:[UIColor lightGrayColor]];
+    [self.mainPageControl setCurrentPageIndicatorTintColor:[UIColor blackColor]];
+    [self.mainPageControl setBackgroundColor:[UIColor whiteColor]];
+    [self.mainPageControl setEnabled:NO];
+    [self.mainPageControl setCurrentPage:1];
+    [self.view addSubview:self.mainPageControl];
 }
 
 #pragma mark - NavigationItem Action
@@ -113,20 +110,20 @@
     switch (currentPage) {
         case 0:
             [self setTitle:@"借阅记录"];
-            self.navigationItem.leftBarButtonItem.enabled = NO;
+            self.navigationItem.leftBarButtonItem = nil;
             break;
         case 1:
             [self setTitle:@"图书查询"];
-            self.navigationItem.leftBarButtonItem.enabled = NO;
+            self.navigationItem.leftBarButtonItem = nil;
             break;
         case 2:
             [self setTitle:@"图书漂流"];
-            self.navigationItem.leftBarButtonItem.enabled = YES;
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(publishBook)];
+            [self.navigationItem.leftBarButtonItem setTintColor:[UIColor grayColor]];
             break;
         default:
             break;
     }
-
 }
 
 
@@ -153,7 +150,6 @@
 
 - (void)showBookExchangeDetailViewControllerWithBook:(iLIBFloatBookItem*)book
 {
-    
     SLBookExchangeDetailViewController *detailViewController = [[SLBookExchangeDetailViewController alloc] init];
     [detailViewController setBook:book];
     [self.navigationController pushViewController:detailViewController animated:YES];
