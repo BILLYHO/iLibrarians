@@ -9,7 +9,6 @@
 #import "SLCubeViewController.h"
 
 #import "iLIBBorrowedBookDetailViewController.h"
-#import "SLCubeChildViewController.h"
 #import "SLSearchBookView.h"
 #import "SLBookExchangeView.h"
 #import "SLMyLibraryView.h"
@@ -71,24 +70,23 @@
 {
     UIViewController *controller;
 
-    CGRect subFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height  - PAGE_CONTROL_BAR_HEIGHT);
     
-    controller = [[SLCubeChildViewController alloc] init];
-    SLSearchBookView *searchBookView = [[SLSearchBookView alloc] initWithFrame:subFrame];
+    controller = [[UIViewController alloc] init];
+    SLSearchBookView *searchBookView = [[SLSearchBookView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height  - PAGE_CONTROL_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - 50)];
     searchBookView.delegate = self;
     [controller.view addSubview:searchBookView];
     [self addCubeSideForChildController:controller];
     
-    controller = [[SLCubeChildViewController alloc] init];
-    SLBookExchangeView *bookExchangeView = [[SLBookExchangeView alloc] initWithFrame:subFrame];
+    controller = [[UIViewController alloc] init];
+    SLBookExchangeView *bookExchangeView = [[SLBookExchangeView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height  - PAGE_CONTROL_BAR_HEIGHT)];
     bookExchangeView.delegate = self;
     [controller.view addSubview:bookExchangeView];
     [self addCubeSideForChildController:controller];
     
-    controller = [[SLCubeChildViewController alloc] init];
+    controller = [[UIViewController alloc] init];
     [self addCubeSideForChildController:controller];
     
-    controller = [[SLCubeChildViewController alloc] init];
+    controller = [[UIViewController alloc] init];
     SLMyLibraryView *myLibraryView = [[SLMyLibraryView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height  - PAGE_CONTROL_BAR_HEIGHT - 54)];
     myLibraryView.delegate = self;
     [controller.view addSubview:myLibraryView];
@@ -131,28 +129,7 @@
 
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    NSInteger currentPage = scrollView.contentOffset.x / scrollView.frame.size.width;
-//    [self.mainPageControl setCurrentPage:currentPage];
-//    
-//    switch (currentPage) {
-//        case 0:
-//            [self setTitle:@"借阅记录"];
-//            self.navigationItem.leftBarButtonItem.enabled = NO;
-//            break;
-//        case 1:
-//            [self setTitle:@"图书查询"];
-//            self.navigationItem.leftBarButtonItem.enabled = NO;
-//            break;
-//        case 2:
-//            [self setTitle:@"图书漂流"];
-//            self.navigationItem.leftBarButtonItem.enabled = YES;
-//            break;
-//        default:
-//            break;
-//    }
-//}
+
 
 #pragma mark - SearchBookDelegate
 - (void) searchKeyword:(NSString *)searchString

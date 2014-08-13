@@ -72,13 +72,11 @@
         _footer = [[MJRefreshFooterView alloc] init];
         _footer.delegate = (id)self;
         _footer.scrollView = self.tableView;
-		[_header beginRefreshing];
 		
-		
+		[self initRefresh];
         self.iLibEngine = [SLAppDelegate sharedDelegate].iLibEngine;
 		_pageCount = 1;
-		
-        
+
         
     }
     return self;
@@ -88,7 +86,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	
     
 }
 
@@ -153,8 +150,10 @@
 		[self.iLibEngine getCommentWithId:self.book.resId page:_pageCount onSucceeded:^(NSArray *bookArray) {
 			_commentArray = (id)bookArray;
 			[_tableView reloadData];
+            [_header endRefreshing];
 		} onError:^(NSError *engineError) {
 			NSLog(@"Get Comments Error");
+            [_header endRefreshing];
 		}];
         NSLog(@"刷新");
     }
@@ -165,18 +164,20 @@
         NSLog(@"pageCount:%d",_pageCount);
         [self.iLibEngine getCommentWithId:self.book.resId page:_pageCount onSucceeded:^(NSArray *bookArray) {
             [_commentArray addObjectsFromArray:bookArray];
+            [_tableView reloadData];
+            [_footer endRefreshing];
         } onError:^(NSError *engineError) {
             NSLog(@"Get Comments Error");
+            [_footer endRefreshing];
         }];
     }
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(reloadTableView) userInfo:nil repeats:NO];
+    //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(reloadTableView) userInfo:nil repeats:NO];
 }
 
 - (void)reloadTableView
 {
     [_tableView reloadData];
-    [_header endRefreshing];
-    [_footer endRefreshing];
+    [_header beginRefreshing];
 }
 #pragma mark - Selector
 
@@ -208,13 +209,27 @@
     [self.iLibEngine getCommentWithId:self.book.resId page:_pageCount onSucceeded:^(NSArray *bookArray) {
         _commentArray = (id)bookArray;
         [_tableView reloadData];
+        [_header endRefreshing];
     } onError:^(NSError *engineError) {
         NSLog(@"Get Comments Error");
     }];
+    
+
+}
+
+- (void) initRefresh
+{
+    [_header beginRefreshing];
+    _pageCount = 1;
+    NSLog(@"刷新");
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
 }
 
 #pragma mark - TextField Delegate
-
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
 	NSLog(@"return");

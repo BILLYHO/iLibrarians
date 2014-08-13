@@ -168,7 +168,6 @@
 		2CEF07631986A1120079B3F3 /* SLMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CEF07621986A1120079B3F3 /* SLMyInfoViewController.m */; };
 		F6ECA12C1999FABC003098D7 /* SLCubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6ECA12B1999FABC003098D7 /* SLCubeViewController.m */; };
 		F6ECA137199A042F003098D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6ECA136199A042F003098D7 /* QuartzCore.framework */; };
-		F6ECA13A199A0DC1003098D7 /* SLCubeChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6ECA139199A0DC1003098D7 /* SLCubeChildViewController.m */; };
 		F6ECA140199A10F6003098D7 /* GKLCubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6ECA13F199A10F6003098D7 /* GKLCubeViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -416,8 +415,6 @@
 		F6ECA12A1999FABC003098D7 /* SLCubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCubeViewController.h; sourceTree = "<group>"; };
 		F6ECA12B1999FABC003098D7 /* SLCubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCubeViewController.m; sourceTree = "<group>"; };
 		F6ECA136199A042F003098D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F6ECA138199A0DC1003098D7 /* SLCubeChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLCubeChildViewController.h; sourceTree = "<group>"; };
-		F6ECA139199A0DC1003098D7 /* SLCubeChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLCubeChildViewController.m; sourceTree = "<group>"; };
 		F6ECA13E199A10F6003098D7 /* GKLCubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLCubeViewController.h; sourceTree = "<group>"; };
 		F6ECA13F199A10F6003098D7 /* GKLCubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLCubeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -811,8 +808,6 @@
 				2CEF075F1986A0E60079B3F3 /* SLMainViewController.m */,
 				F6ECA12A1999FABC003098D7 /* SLCubeViewController.h */,
 				F6ECA12B1999FABC003098D7 /* SLCubeViewController.m */,
-				F6ECA138199A0DC1003098D7 /* SLCubeChildViewController.h */,
-				F6ECA139199A0DC1003098D7 /* SLCubeChildViewController.m */,
 				2CEF07611986A1120079B3F3 /* SLMyInfoViewController.h */,
 				2CEF07621986A1120079B3F3 /* SLMyInfoViewController.m */,
 				2C636CB01987E93B00C405C4 /* mainView */,
@@ -1063,7 +1058,6 @@
 				2C636D0B1987EB8900C405C4 /* SLBookExchangeDetailCell.m in Sources */,
 				2C636D081987EB8900C405C4 /* SLBookItemCell.m in Sources */,
 				2C636D091987EB8900C405C4 /* SLBookExchangeCell.m in Sources */,
-				F6ECA13A199A0DC1003098D7 /* SLCubeChildViewController.m in Sources */,
 				2CEF07601986A0E60079B3F3 /* SLMainViewController.m in Sources */,
 				2C636BCB1987E38000C405C4 /* iLIBEngine.m in Sources */,
 				2C636CAF1987E93800C405C4 /* SLMyLibraryView.m in Sources */,

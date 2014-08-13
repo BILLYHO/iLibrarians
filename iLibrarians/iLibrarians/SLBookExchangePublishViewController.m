@@ -37,43 +37,58 @@
 		[self setTitle:@"发布消息"];
 		self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
 		
-		UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(44, 76, 39, 21)];
+        CGFloat offest;
+        CGFloat space;
+        
+        if(self.view.frame.size.height == 480)
+            space = 10.0f;
+        else
+            space = 20.0f;
+            
+        offest = space;
+        
+		UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(44, offest, 39, 20)];
 		titleLabel.text = @"书名";
 		titleLabel.font = [UIFont systemFontOfSize:14];
 		titleLabel.textColor = labelColor;
 		[self.view addSubview:titleLabel];
+        offest += titleLabel.frame.size.height + 10.0f;
 		
-		_titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(44, 100, 232, 30)];
+		_titleTextField = [[UITextField alloc] initWithFrame:CGRectMake(44, offest, 232, 30)];
 		[_titleTextField setBorderStyle:UITextBorderStyleRoundedRect];
 		_titleTextField.placeholder = @"请填写书名";
 		_titleTextField.font = [UIFont systemFontOfSize:14];
 		_titleTextField.returnKeyType = UIReturnKeyDefault;
 		_titleTextField.delegate = self;
 		[self.view addSubview:_titleTextField];
+        offest += _titleTextField.frame.size.height + space;
 		
 		
-		UILabel *authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, 141, 39, 21)];
+		UILabel *authorLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, offest, 39, 20)];
 		authorLabel.text = @"作者";
 		authorLabel.font = [UIFont systemFontOfSize:14];
 		authorLabel.textColor = labelColor;
 		[self.view addSubview:authorLabel];
+        offest += authorLabel.frame.size.height + 10.0f;
 		
-		_autherTextField = [[UITextField alloc]initWithFrame:CGRectMake(44, 170, 232, 30)];
+		_autherTextField = [[UITextField alloc]initWithFrame:CGRectMake(44, offest, 232, 30)];
 		[_autherTextField setBorderStyle:UITextBorderStyleRoundedRect];
 		_autherTextField.placeholder = @"请填写作者名字";
 		_autherTextField.font = [UIFont systemFontOfSize:14];
 		_autherTextField.returnKeyType = UIReturnKeyDefault;
 		_autherTextField.delegate = self;
 		[self.view addSubview:_autherTextField];
+        offest += _autherTextField.frame.size.height + space;
 		
 		
-		UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, 213, 34, 21)];
+		UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(44, offest, 34, 20)];
 		descriptionLabel.text = @"描述";
 		descriptionLabel.font = [UIFont systemFontOfSize:14];
 		descriptionLabel.textColor = labelColor;
 		[self.view addSubview:descriptionLabel];
+        offest += descriptionLabel.frame.size.height + 10.0f;
 		
-		_descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(44, 242, 232, 161)];
+		_descriptionTextView = [[UITextView alloc] initWithFrame:CGRectMake(44, offest, 232, 160)];
 		_descriptionTextView.backgroundColor = [UIColor whiteColor];
 		_descriptionTextView.alpha = 1.0f;
 		_descriptionTextView.layer.cornerRadius = 5.0f;
@@ -83,8 +98,9 @@
 		_descriptionTextView.layer.borderWidth = 0.5f;
 		_descriptionTextView.layer.borderColor = [UIColor colorWithRed:0.82 green:0.82 blue:0.82 alpha:1].CGColor;
 		[self.view addSubview:_descriptionTextView];
+        offest += _descriptionTextView.frame.size.height + 10.0f + space;
 		
-		UIButton *borrowButton = [[UIButton alloc] initWithFrame:CGRectMake(44, 420, 110, 30)];
+		UIButton *borrowButton = [[UIButton alloc] initWithFrame:CGRectMake(44, offest, 110, 30)];
 		[borrowButton setTitle:@"求借" forState:UIControlStateNormal];
 		borrowButton.titleLabel.textColor = [UIColor whiteColor];
 		borrowButton.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -92,7 +108,7 @@
 		[borrowButton addTarget:self action:@selector(publishBegBook:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:borrowButton];
 		
-		UIButton *lendButton = [[UIButton alloc] initWithFrame:CGRectMake(166, 420, 110, 30)];
+		UIButton *lendButton = [[UIButton alloc] initWithFrame:CGRectMake(166, offest, 110, 30)];
 		[lendButton setTitle:@"闲置" forState:UIControlStateNormal];
 		lendButton.titleLabel.textColor = [UIColor whiteColor];
 		lendButton.titleLabel.font = [UIFont systemFontOfSize:15];

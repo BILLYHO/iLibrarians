@@ -45,6 +45,7 @@
         
         _contentTextView = [[UITextView alloc] initWithFrame:CGRectMake(253, 10, 47, 21)];
         _contentTextView.textColor = [UIColor whiteColor];
+        _contentTextView.editable = NO;
         [self addSubview:_contentTextView];
     }
     return self;
