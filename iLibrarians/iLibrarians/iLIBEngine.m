@@ -50,6 +50,8 @@
         NSDictionary *dic = [completedOperation responseJSON];
         self.studentId = studentName;
         self.studentName = [dic objectForKey:@"name"];
+        [[NSUserDefaults standardUserDefaults] setObject:self.studentName forKey:@"realname"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         succeedBlock();
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         errorBlock(error);

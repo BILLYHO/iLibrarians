@@ -47,6 +47,7 @@
      
      self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognizer:)];
      [self addGestureRecognizer:self.tapGestureRecognizer];
+
 }
 
 - (void)tapRecognizer:(UITapGestureRecognizer*)tapGestureRecognizer

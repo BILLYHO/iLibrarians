@@ -106,7 +106,7 @@
     
     if (indexPath.section == 0)
     {
-        cell.textLabel.text = [NSString stringWithFormat: @"Hi~ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
+        cell.textLabel.text = [NSString stringWithFormat: @"Hi~ %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"realname"]];
     }
     else
     {

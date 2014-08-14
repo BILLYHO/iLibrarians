@@ -10,6 +10,8 @@
 
 @interface SLLogInViewController ()
 
+@property (nonatomic, strong) UIView *tranView;
+
 @end
 
 @implementation SLLogInViewController
@@ -107,7 +109,72 @@
     SLCubeViewController *controller = [[SLCubeViewController alloc]init];
     UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:controller];
     [self presentViewController:mainNavigationController animated:YES completion:nil];
+    
+    if (![@"YES" isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"introHasShown"]])
+    {
+        [self setUpTranView];
+        [mainNavigationController.view addSubview:_tranView];
+        [mainNavigationController.view bringSubviewToFront:_tranView];
+        //[[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"introHasShown"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
+- (void) setUpTranView
+{
+    _tranView = [[UIView alloc] initWithFrame:self.view.frame];
+    _tranView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.5];
+    
+    UIImageView *centerImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Single_Tap"]];
+    centerImage.frame = CGRectMake(0, 0, 64, 64);
+    centerImage.center = CGPointMake(160, 270);
+    [_tranView addSubview:centerImage];
+    
+    UILabel *centerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 120, 60)];
+    centerLabel.text = @"点击查询图书";
+    centerLabel.textColor = [UIColor whiteColor];
+    centerLabel.textAlignment = NSTextAlignmentCenter;
+    centerLabel.center = CGPointMake(160, 310);
+    [_tranView addSubview:centerLabel];
+    
+    UIImageView *leftImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Swipe_Right"]];
+    leftImage.frame = CGRectMake(0, 0, 64, 64);
+    leftImage.center = CGPointMake(50, 300);
+    [_tranView addSubview:leftImage];
+    
+    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 320, 100, 60)];
+    leftLabel.numberOfLines = 2;
+    leftLabel.text = @"右划查看\n借阅记录";
+    leftLabel.textColor = [UIColor whiteColor];
+    [_tranView addSubview:leftLabel];
+    
+    UIImageView *rightImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Swipe_Left"]];
+    rightImage.frame = CGRectMake(0, 0, 64, 64);
+    rightImage.center = CGPointMake(270, 300);
+    [_tranView addSubview:rightImage];
+    
+    UILabel *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(240, 320, 100, 60)];
+    rightLabel.numberOfLines = 2;
+    rightLabel.text = @"左划查看\n漂流图书";
+    rightLabel.textColor = [UIColor whiteColor];
+    [_tranView addSubview:rightLabel];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
+    [button setTitle:@"我知道了" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.layer.borderWidth = 0.5f;
+    button.layer.borderColor = [UIColor whiteColor].CGColor;
+    button.layer.cornerRadius = 20.0f;
+    button.layer.masksToBounds = YES;
+    button.center = CGPointMake(160, 450);
+    [button addTarget:self action:@selector(dismissTranView) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_tranView addSubview:button];
+}
+
+- (void) dismissTranView
+{
+    [_tranView removeFromSuperview];
+}
 
 @end

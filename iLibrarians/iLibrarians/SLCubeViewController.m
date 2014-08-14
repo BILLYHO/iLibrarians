@@ -48,7 +48,10 @@
     [super viewDidLoad];
     
     [self configureDemonstrationChildViewControllers];
-    [self initPageControl];
+    //[self initPageControl];
+    
+
+    
 }
 
 - (void)configureDemonstrationChildViewControllers
