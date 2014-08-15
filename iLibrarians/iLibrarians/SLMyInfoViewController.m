@@ -9,6 +9,8 @@
 #import "SLMyInfoViewController.h"
 #import "iLIBEngine.h"
 
+#import "SLAboutiLibrariansViewController.h"
+
 @interface SLMyInfoViewController ()  <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIButton *logoutButton;
@@ -110,6 +112,7 @@
     }
     else
     {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         switch (indexPath.row)
         {
             case 0:
@@ -144,6 +147,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
+        SLAboutiLibrariansViewController *aboutVC =  [[SLAboutiLibrariansViewController alloc] init];
+        [self.navigationController pushViewController:aboutVC animated:YES];
+    }
 }
 
 @end

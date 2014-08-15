@@ -110,14 +110,14 @@
     UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:controller];
     [self presentViewController:mainNavigationController animated:YES completion:nil];
     
-    if (![@"YES" isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"introHasShown"]])
-    {
-        [self setUpTranView];
-        [mainNavigationController.view addSubview:_tranView];
-        [mainNavigationController.view bringSubviewToFront:_tranView];
-        //[[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"introHasShown"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+//    if (![@"YES" isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"introHasShown"]])
+//    {
+//        [self setUpTranView];
+//        [mainNavigationController.view addSubview:_tranView];
+//        [mainNavigationController.view bringSubviewToFront:_tranView];
+//        //[[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"introHasShown"];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
 }
 
 - (void) setUpTranView
