@@ -939,9 +939,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Johnson;
 				TargetAttributes = {
-					2CEF072819869FFD0079B3F3 = {
-						DevelopmentTeam = W4PNB999EM;
-					};
 					2CEF074319869FFD0079B3F3 = {
 						TestTargetID = 2CEF072819869FFD0079B3F3;
 					};
@@ -1265,6 +1262,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iLibrarians/iLibrarians-Prefix.pch";
 				INFOPLIST_FILE = "iLibrarians/iLibrarians-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1279,6 +1277,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iLibrarians/iLibrarians-Prefix.pch";
 				INFOPLIST_FILE = "iLibrarians/iLibrarians-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
